@@ -23,26 +23,26 @@ export const Navbar = () => {
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
+        <NavbarBrand as="li" className="max-w-fit gap-3">
+          <NextLink className="flex items-center justify-start gap-1" href="/">
             <Image
               alt="Axyl logo"
               as={NextImage}
               src="/logo.png"
-              height={30}
-              width={60}
+              height={35}
+              width={70}
               className="rounded-none"
             />
           </NextLink>
         </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="ml-2 hidden justify-start gap-4 lg:flex">
           {siteConfig.navItems &&
             siteConfig.navItems.map((item: { href: string; label: string }) => (
               <NavbarItem key={item.href}>
                 <NextLink
                   className={clsx(
                     linkStyles({ color: "foreground" }),
-                    "data-[active=true]:text-primary data-[active=true]:font-medium"
+                    "data-[active=true]:text-primary data-[active=true]:font-medium",
                   )}
                   color="foreground"
                   href={item.href}
@@ -55,10 +55,10 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
+        className="hidden basis-1/5 sm:flex sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
+        <NavbarItem className="hidden gap-2 sm:flex">
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
           </Link>
@@ -68,7 +68,7 @@ export const Navbar = () => {
           <Button
             isExternal
             as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
+            className="text-default-600 bg-default-100 text-sm font-normal"
             href={siteConfig.links.sponsor}
             startContent={<HeartFilledIcon className="text-danger" />}
             variant="flat"
@@ -78,7 +78,7 @@ export const Navbar = () => {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+      <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
         <Link isExternal aria-label="Github" href={siteConfig.links.github}>
           <GithubIcon className="text-default-500" />
         </Link>
@@ -96,7 +96,7 @@ export const Navbar = () => {
                     {item.label}
                   </Link>
                 </NavbarMenuItem>
-              )
+              ),
             )}
         </div>
       </NavbarMenu>

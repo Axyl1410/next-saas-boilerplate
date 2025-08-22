@@ -7,7 +7,6 @@ import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
-import { Link } from "@heroui/link";
 
 export const metadata: Metadata = {
   title: {
@@ -37,27 +36,16 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen text-foreground bg-background font-sans antialiased",
-          fontSans.variable
+          "text-foreground bg-background min-h-screen font-sans antialiased",
+          fontSans.variable,
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
+          <div className="relative flex flex-col">
             <Navbar />
-            <main className="container mx-auto max-w-7xl sm:pt-16 px-6 flex-grow">
+            <main className="container mx-auto flex min-h-[calc(100vh-64px)] max-w-7xl flex-grow items-center justify-center px-6">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://github.com/Axyl1410/next-saas-boilerplate"
-                title="GitHub repository"
-              >
-                <span className="text-default-600">Made with</span>
-                <p className="text-primary">❤️</p>
-              </Link>
-            </footer>
           </div>
         </Providers>
       </body>

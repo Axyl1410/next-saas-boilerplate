@@ -11,7 +11,7 @@ import { Button } from "@heroui/button";
 export default function Home() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
+      <div className="inline-block max-w-xl justify-center text-center">
         <span className={title()}>Next.js Boilerplate &nbsp;</span>
         <span className={title({ color: "violet" })}>comprehensive&nbsp;</span>
         <br />
@@ -22,15 +22,16 @@ export default function Home() {
       </div>
 
       <div className="flex gap-3">
-        <Button
+        <Link
           className={buttonStyles({
             color: "primary",
             radius: "full",
             variant: "shadow",
           })}
+          href="/sign-in"
         >
           Sign in
-        </Button>
+        </Link>
         <Link
           isExternal
           className={buttonStyles({ variant: "bordered", radius: "full" })}
