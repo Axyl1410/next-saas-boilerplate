@@ -1,11 +1,12 @@
 "use client";
 
-import { LoadingScreen } from "@/components/loading";
-import { signOut } from "@/lib/auth-client";
 import { Button } from "@heroui/button";
 import { addToast } from "@heroui/toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+import { signOut } from "@/lib/auth-client";
+import { LoadingScreen } from "@/components/loading";
 
 export default function SignOutButton() {
   const router = useRouter();
@@ -14,8 +15,8 @@ export default function SignOutButton() {
   return (
     <>
       <Button
-        disabled={loading}
         color="primary"
+        disabled={loading}
         onPress={() =>
           signOut({
             fetchOptions: {

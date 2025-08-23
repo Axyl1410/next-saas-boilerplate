@@ -1,7 +1,5 @@
 "use client";
 
-import { LoadingScreen } from "@/components/loading";
-import { signIn } from "@/lib/auth-client";
 import { Button } from "@heroui/button";
 import { Divider } from "@heroui/divider";
 import { Link } from "@heroui/link";
@@ -9,8 +7,13 @@ import { addToast } from "@heroui/toast";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+
 import { containerVariants } from "../../components/constants";
+
 import { socialButtons } from "./constants";
+
+import { signIn } from "@/lib/auth-client";
+import { LoadingScreen } from "@/components/loading";
 
 interface SocialLoginProps {
   onEmailClick: () => void;
@@ -44,17 +47,17 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
   return (
     <motion.div
       key="social-login"
-      className="flex h-full flex-col gap-4"
-      variants={containerVariants}
-      initial="hidden"
       animate="visible"
+      className="flex h-full flex-col gap-4"
+      initial="hidden"
+      variants={containerVariants}
     >
       <div>
         <Button
+          className="w-full"
           color="primary"
           startContent={<Icon icon="ic:baseline-email" width={24} />}
           onPress={onEmailClick}
-          className="w-full"
         >
           Continue with Email
         </Button>
@@ -71,6 +74,7 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
       {socialButtons.map((button) => (
         <div key={button.text}>
           <Button
+            className="w-full"
             disabled={loading}
             startContent={
               <Icon
@@ -80,7 +84,6 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
               />
             }
             variant={button.variant}
-            className="w-full"
             onPress={() => handleClick(button.provider)}
           >
             {button.text}
@@ -90,7 +93,7 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
 
       <p className="mt-4 text-center text-sm">
         Need to create an account? &nbsp;
-        <Link href="/sign-up" className="text-primary">
+        <Link className="text-primary" href="/sign-up">
           Sign Up
         </Link>
       </p>

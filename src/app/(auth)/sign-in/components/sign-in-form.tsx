@@ -2,6 +2,7 @@
 
 import { AnimatePresence } from "framer-motion";
 import { Suspense, useState } from "react";
+
 import EmailForm from "./email-form";
 import EmailFormSkeleton from "./email-form-skeleton";
 import SocialLogin from "./social-login";

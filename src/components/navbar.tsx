@@ -28,10 +28,10 @@ export const Navbar = () => {
             <Image
               alt="Axyl logo"
               as={NextImage}
-              src="/logo.png"
-              height={35}
-              width={70}
               className="rounded-none"
+              height={35}
+              src="/logo.png"
+              width={70}
             />
           </NextLink>
         </NavbarBrand>

@@ -6,6 +6,7 @@ import { Input } from "@heroui/input";
 import { Link } from "@heroui/link";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+
 import { containerVariants } from "../../components/constants";
 
 interface EmailFormProps {
@@ -16,21 +17,21 @@ export default function EmailForm({ onBackClick }: EmailFormProps) {
   return (
     <motion.div
       key="email-form"
-      className="flex h-full flex-col gap-4"
-      variants={containerVariants}
-      initial="hidden"
       animate="visible"
+      className="flex h-full flex-col gap-4"
+      initial="hidden"
+      variants={containerVariants}
     >
       <div>
-        <Input type="email" label="Email address" variant="bordered" required />
+        <Input required label="Email address" type="email" variant="bordered" />
       </div>
 
       <div>
-        <Input type="password" label="Password" variant="bordered" required />
+        <Input required label="Password" type="password" variant="bordered" />
       </div>
 
       <div>
-        <Button color="primary" className="w-full">
+        <Button className="w-full" color="primary">
           Sign In
         </Button>
       </div>
@@ -45,19 +46,19 @@ export default function EmailForm({ onBackClick }: EmailFormProps) {
 
       <div>
         <Button
+          className="w-full"
           startContent={
             <Icon icon="ic:baseline-keyboard-backspace" width={20} />
           }
           variant="flat"
           onPress={onBackClick}
-          className="w-full"
         >
           Other Sign In options
         </Button>
       </div>
       <p className="mt-4 text-center text-sm">
         Forgot your password? &nbsp;
-        <Link href="/reset-password" className="text-primary">
+        <Link className="text-primary" href="/reset-password">
           Reset password
         </Link>
       </p>

@@ -16,10 +16,12 @@ export default function AuthLayout({
 
   useEffect(() => {
     const childrenNode = childrenRef.current;
+
     if (!childrenNode) return;
 
     const resizeObserver = new ResizeObserver(() => {
       const newHeight = childrenNode.offsetHeight + 30;
+
       animate(scope.current, { height: newHeight });
     });
 
@@ -38,10 +40,10 @@ export default function AuthLayout({
             <AnimatePresence mode="popLayout">
               <motion.div
                 key={pathname}
-                className="absolute inset-4"
-                initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
+                className="absolute inset-4"
                 exit={{ opacity: 0 }}
+                initial={{ opacity: 0 }}
               >
                 <div ref={childrenRef}>{children}</div>
               </motion.div>
