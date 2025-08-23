@@ -1,17 +1,46 @@
 "use client";
 
+import { LoadingScreen } from "@/components/loading";
+import { signIn } from "@/lib/auth-client";
 import { Button } from "@heroui/button";
 import { Divider } from "@heroui/divider";
 import { Link } from "@heroui/link";
+import { addToast } from "@heroui/toast";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-import { containerVariants, itemVariants, socialButtons } from "./constants";
+import { useState } from "react";
+import { containerVariants } from "../../components/constants";
+import { socialButtons } from "./constants";
 
 interface SocialLoginProps {
   onEmailClick: () => void;
 }
 
 export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
+  const [loading, setLoading] = useState(false);
+
+  async function handleClick(provider: string) {
+    await signIn.social(
+      {
+        provider,
+        callbackURL: "/dashboard",
+      },
+      {
+        onRequest: () => {
+          setLoading(true);
+        },
+        onError: (ctx) => {
+          setLoading(false);
+          addToast({
+            title: "Something wrong",
+            description: ctx.error.message,
+            color: "danger",
+          });
+        },
+      },
+    );
+  }
+
   return (
     <motion.div
       key="social-login"
@@ -19,9 +48,8 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      exit="exit"
     >
-      <motion.div variants={itemVariants}>
+      <div>
         <Button
           color="primary"
           startContent={<Icon icon="ic:baseline-email" width={24} />}
@@ -30,19 +58,20 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
         >
           Continue with Email
         </Button>
-      </motion.div>
+      </div>
 
-      <motion.div variants={itemVariants}>
+      <div>
         <div className="flex items-center gap-4 py-2">
           <Divider className="flex-1" />
           <p className="text-tiny text-default-500 shrink-0">OR</p>
           <Divider className="flex-1" />
         </div>
-      </motion.div>
+      </div>
 
       {socialButtons.map((button) => (
-        <motion.div key={button.text} variants={itemVariants}>
+        <div key={button.text}>
           <Button
+            disabled={loading}
             startContent={
               <Icon
                 className="text-default-500"
@@ -52,20 +81,21 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
             }
             variant={button.variant}
             className="w-full"
+            onPress={() => handleClick(button.provider)}
           >
             {button.text}
           </Button>
-        </motion.div>
+        </div>
       ))}
 
-      <motion.div variants={itemVariants}>
-        <p className="mt-4 text-center">
-          Need to create an account? &nbsp;
-          <Link href="/sign-up" className="text-primary">
-            Sign Up
-          </Link>
-        </p>
-      </motion.div>
+      <p className="mt-4 text-center text-sm">
+        Need to create an account? &nbsp;
+        <Link href="/sign-up" className="text-primary">
+          Sign Up
+        </Link>
+      </p>
+
+      {loading && <LoadingScreen />}
     </motion.div>
   );
 }

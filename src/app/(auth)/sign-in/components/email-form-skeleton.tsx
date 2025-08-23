@@ -29,6 +29,9 @@ export default function EmailFormSkeleton() {
       <div>
         <Skeleton className="h-12 w-full rounded-lg" />
       </div>
+      <div>
+        <Skeleton className="mx-auto h-4 w-48 rounded" />
+      </div>
     </div>
   );
 }

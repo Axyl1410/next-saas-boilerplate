@@ -2,12 +2,12 @@
 
 @config "../../tailwind.config.js";
 
-/* @layer base {
+@layer base {
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
-
+  /* 
   ::-webkit-scrollbar-track {
     background: var(--color-muted);
     border-radius: var(--radius-sm);
@@ -20,8 +20,8 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-primary);
-  }
-} */
+  }*/
+}
 
 .no-scrollbar {
   -ms-overflow-style: none;
