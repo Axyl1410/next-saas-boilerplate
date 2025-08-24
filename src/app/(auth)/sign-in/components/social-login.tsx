@@ -12,8 +12,8 @@ import { containerVariants } from "../../components/constants";
 
 import { socialButtons } from "./constants";
 
-import { signIn } from "@/lib/auth-client";
 import { LoadingScreen } from "@/components/loading";
+import { signIn } from "@/lib/auth-client";
 
 interface SocialLoginProps {
   onEmailClick: () => void;
@@ -39,6 +39,9 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
             description: ctx.error.message,
             color: "danger",
           });
+        },
+        onSuccess: () => {
+          setLoading(false);
         },
       },
     );

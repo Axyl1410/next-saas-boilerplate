@@ -43,9 +43,9 @@ export default function SignupForm() {
 
       <div>
         <div className="flex flex-col gap-2">
-          <label className="text-foreground text-sm font-medium">
+          <p className="text-foreground text-sm font-medium">
             Profile Image (optional)
-          </label>
+          </p>
           <div className="border-default-300 bg-background flex items-center gap-3 rounded-lg border p-3 dark:bg-transparent">
             <Button className="shrink-0" size="sm" variant="flat">
               Choose File
