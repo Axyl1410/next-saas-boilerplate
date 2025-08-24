@@ -1,7 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  // output   = "../generated/prisma"
-  // output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -67,6 +65,4 @@ model verification {
   expiresAt  DateTime @db.Date
   createdAt  DateTime @db.Date
   updatedAt  DateTime @db.Date
-
-  @@unique([identifier, value])
 }
