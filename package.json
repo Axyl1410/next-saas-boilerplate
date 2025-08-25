@@ -9,8 +9,8 @@
     "lint": "eslint --fix",
     "prettier": "prettier --write .",
     "prepare": "husky",
-    "generate": "prisma generate",
-    "studio": "prisma studio",
+    "generate": "npx prisma generate",
+    "studio": "npx prisma studio",
     "postinstall": "prisma generate"
   },
   "dependencies": {
