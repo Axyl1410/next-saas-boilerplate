@@ -34,7 +34,7 @@ export default function AuthLayout({
 
   return (
     <div className="container mx-auto flex min-h-[calc(100vh-64px)] items-center justify-center overflow-hidden">
-      <Card className="my-6 w-full max-w-md">
+      <Card className="my-6 hidden w-full max-w-md sm:block">
         <CardBody className="no-scrollbar relative p-4">
           <motion.div ref={scope} layout className="relative h-50 w-full">
             <AnimatePresence mode="popLayout">
@@ -51,6 +51,9 @@ export default function AuthLayout({
           </motion.div>
         </CardBody>
       </Card>
+      <div className="my-6 flex w-full flex-col gap-4 sm:hidden">
+        {children}
+      </div>
     </div>
   );
 }

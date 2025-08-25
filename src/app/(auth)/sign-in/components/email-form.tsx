@@ -59,7 +59,7 @@ export default function EmailForm({ onBackClick }: EmailFormProps) {
       <p className="mt-4 text-center text-sm">
         Forgot your password? &nbsp;
         <Link className="text-primary" href="/reset-password">
-          Reset password
+          Forgot Password
         </Link>
       </p>
     </motion.div>

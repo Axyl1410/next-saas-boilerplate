@@ -12,7 +12,7 @@ import { containerVariants } from "../../components/constants";
 
 import { socialButtons } from "./constants";
 
-import { LoadingScreen } from "@/components/loading";
+import { LoadingProgress } from "@/components/loading";
 import { signIn } from "@/lib/auth-client";
 
 interface SocialLoginProps {
@@ -101,7 +101,7 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
         </Link>
       </p>
 
-      {loading && <LoadingScreen />}
+      {loading && <LoadingProgress />}
     </motion.div>
   );
 }

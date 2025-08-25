@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
 import SignupForm from "./components/signup-form";
-import SignupFormSkeleton from "./components/signup-form-skeleton";
+import Loading from "./loading";
 
 export default function SignUp() {
   return (
@@ -10,7 +10,7 @@ export default function SignUp() {
       <p className="text-default-500">
         Enter your information to create an account.
       </p>
-      <Suspense fallback={<SignupFormSkeleton />}>
+      <Suspense fallback={<Loading />}>
         <SignupForm />
       </Suspense>
     </div>
