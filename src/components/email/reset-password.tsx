@@ -5,7 +5,6 @@ import {
   Head,
   Html,
   Img,
-  Link,
   Preview,
   Section,
   Text,
@@ -57,13 +56,13 @@ export const ResetPasswordEmail = ({
                 more security tips.
               </Link> */}
             </Text>
-            <Text style={text}>
+            {/* <Text style={text}>
               If the Button does not work, you can copy and paste the following
               link into your browser:{" "}
             </Text>
             <Link href={resetPasswordLink} style={anchor}>
               {resetPasswordLink}
-            </Link>
+            </Link> */}
             <Text style={text}>Axyl Team.</Text>
           </Section>
         </Container>
@@ -107,6 +106,6 @@ const button = {
   padding: "14px 7px",
 };
 
-const anchor = {
-  textDecoration: "underline",
-};
+// const anchor = {
+//   textDecoration: "underline",
+// };
