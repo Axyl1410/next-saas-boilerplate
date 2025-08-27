@@ -96,7 +96,7 @@ export default function SocialLogin({ onEmailClick }: SocialLoginProps) {
 
       <p className="mt-4 text-center text-sm">
         Need to create an account? &nbsp;
-        <Link className="text-primary" href="/sign-up">
+        <Link className="text-primary text-sm" href="/sign-up">
           Sign Up
         </Link>
       </p>

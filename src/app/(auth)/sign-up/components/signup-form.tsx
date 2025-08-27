@@ -64,7 +64,7 @@ export default function SignupForm() {
       <div>
         <p className="mt-4 text-center text-sm">
           Already have an account? &nbsp;
-          <Link className="text-primary" href="/sign-in">
+          <Link className="text-primary text-sm" href="/sign-in">
             Log In
           </Link>
         </p>
