@@ -7,7 +7,7 @@ import { useReducer, useState } from "react";
 
 import { LoadingProgress } from "@/components/loading";
 import { authClient } from "@/lib/auth-client";
-import { formReducerEmail } from "@/reduce";
+import { formReducerEmail } from "@/reducer";
 import { ActionEmailType, initialStateEmail } from "@/types";
 
 export default function EmailForm() {

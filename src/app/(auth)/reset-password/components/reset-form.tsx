@@ -15,7 +15,7 @@ import { useReducer, useState } from "react";
 
 import { LoadingProgress } from "@/components/loading";
 import { authClient } from "@/lib/auth-client";
-import { formReducerResetPassword } from "@/reduce";
+import { formReducerResetPassword } from "@/reducer";
 import { ActionPasswordType, initialStatePassword } from "@/types";
 
 interface ResetFormProps {

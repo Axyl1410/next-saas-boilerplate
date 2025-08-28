@@ -15,7 +15,7 @@ import { containerVariants } from "../../components/constants";
 
 import { LoadingProgress } from "@/components/loading";
 import { signIn } from "@/lib/auth-client";
-import { formReducerLogin } from "@/reduce";
+import { formReducerLogin } from "@/reducer";
 import { ActionLoginType, initialStateLogin } from "@/types";
 
 interface EmailFormProps {

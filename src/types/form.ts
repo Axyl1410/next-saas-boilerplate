@@ -11,6 +11,13 @@ export const ActionLoginType = {
   ...ActionPasswordType,
 };
 
+export const ActionSignUpType = {
+  ...ActionLoginType,
+  UPDATE_FIRST_NAME: "UPDATE_FIRST_NAME",
+  UPDATE_LAST_NAME: "UPDATE_LAST_NAME",
+  UPDATE_CONFIRM_PASSWORD: "UPDATE_CONFIRM_PASSWORD",
+};
+
 export type EmailState = {
   email: string;
 };
@@ -24,11 +31,27 @@ export type LoginState = {
   password: string;
 };
 
+export type SignUpState = {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  confirmPassword: string;
+};
+
 export const initialStateEmail: EmailState = {
   email: "",
 };
 export const initialStatePassword: PasswordState = {
   password: "",
+};
+
+export const initialStateSignUp: SignUpState = {
+  email: "",
+  password: "",
+  firstName: "",
+  lastName: "",
+  confirmPassword: "",
 };
 
 export const initialStateLogin: LoginState = {
@@ -43,6 +66,11 @@ export type FormLoginAction = {
 
 export type FormResetPasswordAction = {
   type: (typeof ActionPasswordType)[keyof typeof ActionPasswordType];
+  payload: string;
+};
+
+export type FormSignUpAction = {
+  type: (typeof ActionSignUpType)[keyof typeof ActionSignUpType];
   payload: string;
 };
 

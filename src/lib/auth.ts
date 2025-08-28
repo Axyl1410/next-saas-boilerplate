@@ -4,11 +4,11 @@ import { nextCookies } from "better-auth/next-js";
 import { haveIBeenPwned, openAPI } from "better-auth/plugins";
 import { redirect } from "next/navigation";
 
-import { assertValue } from "./assert-value";
 import client from "./db";
 import { resend } from "./resend";
 
 import ResetPasswordEmail from "@/components/email/reset-password";
+import { assertValue } from "./utils";
 
 export const auth = betterAuth({
   emailAndPassword: {
