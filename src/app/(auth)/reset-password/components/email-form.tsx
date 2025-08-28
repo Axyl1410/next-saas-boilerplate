@@ -1,36 +1,39 @@
-import { LoadingProgress } from "@/components/loading";
-import { authClient } from "@/lib/auth-client";
 import { Alert } from "@heroui/alert";
+import { Button } from "@heroui/button";
 import { Form } from "@heroui/form";
 import { Input } from "@heroui/input";
 import { addToast } from "@heroui/toast";
-import { Button } from "@heroui/button";
 import { useState } from "react";
+
+import { LoadingProgress } from "@/components/loading";
+import { authClient } from "@/lib/auth-client";
 
 export default function EmailForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [submitted, setSubmitted] = useState<Record<
-    string,
-    FormDataEntryValue
-  > | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
     try {
-      const data = Object.fromEntries(new FormData(e.currentTarget));
-
-      setSubmitted(data as Record<string, FormDataEntryValue>);
+      e.preventDefault();
 
       setIsLoading(true);
 
-      if (!submitted?.email) {
+      const formData = new FormData(e.currentTarget);
+      const email = String(formData.get("email") || "").trim();
+
+      if (!email) {
+        addToast({
+          title: "Error",
+          description: "Please enter your email",
+          color: "danger",
+        });
+        setIsLoading(false);
+
         return;
       }
 
       const { error } = await authClient.requestPasswordReset({
-        email: submitted.email as string,
+        email,
         redirectTo: "/reset-password",
       });
 

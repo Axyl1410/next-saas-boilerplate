@@ -11,7 +11,8 @@
     "prepare": "husky",
     "generate": "npx prisma generate",
     "studio": "npx prisma studio",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "husky": "eslint --fix && prettier --write ."
   },
   "dependencies": {
     "@heroui/alert": "^2.2.24",
@@ -26,6 +27,7 @@
     "@heroui/kbd": "2.2.19",
     "@heroui/link": "2.2.21",
     "@heroui/listbox": "2.3.23",
+    "@heroui/modal": "^2.2.21",
     "@heroui/navbar": "2.2.22",
     "@heroui/progress": "^2.2.20",
     "@heroui/skeleton": "^2.2.15",

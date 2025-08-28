@@ -11,7 +11,7 @@ export default async function DashboardPage() {
   });
 
   if (!session) {
-    redirect("/sign-in");
+    return redirect("/sign-in");
   }
 
   return (

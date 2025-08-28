@@ -4,6 +4,7 @@ import { nextCookies } from "better-auth/next-js";
 import { haveIBeenPwned, openAPI } from "better-auth/plugins";
 import { redirect } from "next/navigation";
 
+import { assertValue } from "./assert-value";
 import client from "./db";
 import { resend } from "./resend";
 
@@ -27,6 +28,9 @@ export const auth = betterAuth({
         }),
       });
     },
+    onPasswordReset: async () => {
+      redirect("/sign-in");
+    },
   },
   emailVerification: {
     sendOnSignUp: true,
@@ -38,16 +42,34 @@ export const auth = betterAuth({
   },
   socialProviders: {
     github: {
-      clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+      clientId: assertValue(
+        process.env.GITHUB_CLIENT_ID,
+        "Missing GITHUB_CLIENT_ID",
+      ),
+      clientSecret: assertValue(
+        process.env.GITHUB_CLIENT_SECRET,
+        "Missing GITHUB_CLIENT_SECRET",
+      ),
     },
     discord: {
-      clientId: process.env.DISCORD_CLIENT_ID!,
-      clientSecret: process.env.DISCORD_CLIENT_SECRET!,
+      clientId: assertValue(
+        process.env.DISCORD_CLIENT_ID,
+        "Missing DISCORD_CLIENT_ID",
+      ),
+      clientSecret: assertValue(
+        process.env.DISCORD_CLIENT_SECRET,
+        "Missing DISCORD_CLIENT_SECRET",
+      ),
     },
     google: {
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: assertValue(
+        process.env.GOOGLE_CLIENT_ID,
+        "Missing GOOGLE_CLIENT_ID",
+      ),
+      clientSecret: assertValue(
+        process.env.GOOGLE_CLIENT_SECRET,
+        "Missing GOOGLE_CLIENT_SECRET",
+      ),
     },
   },
   account: {

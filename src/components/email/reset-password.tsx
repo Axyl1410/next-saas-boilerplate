@@ -51,18 +51,8 @@ export const ResetPasswordEmail = ({
             <Text style={text}>
               To keep your account secure, please don&apos;t forward this email
               to anyone.
-              {/* See our Help Center for{" "}
-              <Link href={resetPasswordLink} style={anchor}>
-                more security tips.
-              </Link> */}
             </Text>
-            {/* <Text style={text}>
-              If the Button does not work, you can copy and paste the following
-              link into your browser:{" "}
-            </Text>
-            <Link href={resetPasswordLink} style={anchor}>
-              {resetPasswordLink}
-            </Link> */}
+
             <Text style={text}>Axyl Team.</Text>
           </Section>
         </Container>

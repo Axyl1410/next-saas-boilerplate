@@ -8,6 +8,7 @@ export function LoadingScreen() {
   return (
     <AnimatePresence mode="wait">
       <motion.div
+        key="loading-screen"
         animate={{ opacity: 1 }}
         className="fixed inset-0 z-40 flex items-center justify-center bg-black/10"
         exit={{ opacity: 0 }}
@@ -25,6 +26,7 @@ export default function LoadingPage() {
   return (
     <AnimatePresence mode="wait">
       <motion.div
+        key="loading-page"
         animate={{ opacity: 1 }}
         className="flex h-full w-full items-center justify-center"
         exit={{ opacity: 0 }}
@@ -40,9 +42,10 @@ export default function LoadingPage() {
 
 export function LoadingProgress() {
   return (
-    <>
+    <AnimatePresence mode="wait">
       <LoadingScreen />
       <motion.div
+        key="loading-progress"
         animate={{ opacity: 1 }}
         className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-center gap-3 bg-stone-900/90 p-2 backdrop-blur-sm"
         exit={{ opacity: 0 }}
@@ -61,6 +64,6 @@ export function LoadingProgress() {
           Refresh
         </Button>
       </motion.div>
-    </>
+    </AnimatePresence>
   );
 }
