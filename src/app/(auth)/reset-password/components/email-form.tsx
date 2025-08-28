@@ -3,14 +3,21 @@ import { Button } from "@heroui/button";
 import { Form } from "@heroui/form";
 import { Input } from "@heroui/input";
 import { addToast } from "@heroui/toast";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 
 import { LoadingProgress } from "@/components/loading";
 import { authClient } from "@/lib/auth-client";
+import { formReducerEmail } from "@/reduce";
+import { ActionEmailType, initialStateEmail } from "@/types";
 
 export default function EmailForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [state, dispatch] = useReducer(formReducerEmail, initialStateEmail);
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({ type: ActionEmailType.UPDATE_EMAIL, payload: e.target.value });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
@@ -18,8 +25,7 @@ export default function EmailForm() {
 
       setIsLoading(true);
 
-      const formData = new FormData(e.currentTarget);
-      const email = String(formData.get("email") || "").trim();
+      const email = state.email;
 
       if (!email) {
         addToast({
@@ -75,6 +81,7 @@ export default function EmailForm() {
               name="email"
               type="email"
               variant="bordered"
+              onChange={handleEmailChange}
             />
             <Button className="w-full" color="primary" type="submit">
               Submit

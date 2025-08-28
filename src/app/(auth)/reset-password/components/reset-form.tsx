@@ -11,10 +11,12 @@ import {
 } from "@heroui/modal";
 import { addToast } from "@heroui/toast";
 import { redirect } from "next/navigation";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 
 import { LoadingProgress } from "@/components/loading";
 import { authClient } from "@/lib/auth-client";
+import { formReducerResetPassword } from "@/reduce";
+import { ActionPasswordType, initialStatePassword } from "@/types";
 
 interface ResetFormProps {
   token: string;
@@ -22,7 +24,18 @@ interface ResetFormProps {
 
 export default function ResetForm({ token }: ResetFormProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const [state, dispatch] = useReducer(
+    formReducerResetPassword,
+    initialStatePassword,
+  );
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: ActionPasswordType.UPDATE_PASSWORD,
+      payload: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
@@ -30,8 +43,7 @@ export default function ResetForm({ token }: ResetFormProps) {
 
       setIsLoading(true);
 
-      const formData = new FormData(e.currentTarget);
-      const password = String(formData.get("password") || "").trim();
+      const password = state.password;
 
       if (!password) {
         addToast({
@@ -75,6 +87,7 @@ export default function ResetForm({ token }: ResetFormProps) {
           name="password"
           type="password"
           variant="bordered"
+          onChange={handlePasswordChange}
         />
         <Button className="w-full" color="primary" type="submit">
           Reset password

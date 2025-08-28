@@ -9,7 +9,7 @@ export default function ResetPassword() {
   const token = useSearchParams().get("token");
 
   if (token) {
-    return <ResetForm />;
+    return <ResetForm token={token} />;
   }
 
   return <EmailForm />;
