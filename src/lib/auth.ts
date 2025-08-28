@@ -6,9 +6,9 @@ import { redirect } from "next/navigation";
 
 import client from "./db";
 import { resend } from "./resend";
+import { assertValue } from "./utils";
 
 import ResetPasswordEmail from "@/components/email/reset-password";
-import { assertValue } from "./utils";
 
 export const auth = betterAuth({
   emailAndPassword: {
