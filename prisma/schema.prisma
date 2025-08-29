@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model account {
+  id                    String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId                String    @db.ObjectId
+  accountId             String
+  providerId            String
+  accessToken           String?
+  refreshToken          String?
+  accessTokenExpiresAt  DateTime? @db.Date
+  refreshTokenExpiresAt DateTime? @db.Date
+  scope                 String?
+  idToken               String?
+  password              String?
+  createdAt             DateTime  @db.Date
+  updatedAt             DateTime  @db.Date
+
+  // Relations
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model session {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  token     String
+  expiresAt DateTime @db.Date
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @db.Date
+  updatedAt DateTime @db.Date
+
+  // Relations
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model user {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String   @unique
+  emailVerified Boolean
+  image         String?
+  createdAt     DateTime @db.Date
+  updatedAt     DateTime @db.Date
+
+  // Relations
+  accounts account[]
+  sessions session[]
+}
+
+model verification {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  value      String
+  expiresAt  DateTime @db.Date
+  createdAt  DateTime @db.Date
+  updatedAt  DateTime @db.Date
+}
