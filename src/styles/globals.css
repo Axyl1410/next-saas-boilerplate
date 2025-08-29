@@ -3,10 +3,10 @@
 @config "../../tailwind.config.js";
 
 @layer base {
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-  }
+  } */
   /* 
   ::-webkit-scrollbar-track {
     background: var(--color-muted);

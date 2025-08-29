@@ -112,6 +112,30 @@ export default function EmailForm({ onBackClick }: EmailFormProps) {
         <Button className="w-full" color="primary" type="submit">
           Sign In
         </Button>
+
+        <Button
+          className="w-full"
+          color="default"
+          variant="flat"
+          onPress={() => {
+            if (!state.email) {
+              addToast({
+                title: "Missing email",
+                description: "Please enter your email to resend verification",
+                color: "warning",
+              });
+
+              return;
+            }
+            addToast({
+              title: "Verification email sent",
+              description: `We sent a verification link to ${state.email}`,
+              color: "success",
+            });
+          }}
+        >
+          Resend verification email
+        </Button>
       </Form>
       <div>
         <div className="flex items-center gap-4 py-2">

@@ -226,6 +226,16 @@ export default function SignupForm() {
         <Button className="w-full" color="primary" type="submit">
           Create account
         </Button>
+
+        <Button
+          as={Link}
+          className="w-full"
+          color="default"
+          href="/reset-password"
+          variant="flat"
+        >
+          Restore account
+        </Button>
       </Form>
 
       <div>

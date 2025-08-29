@@ -40,7 +40,6 @@ export default function EmailForm() {
 
       const { error } = await authClient.requestPasswordReset({
         email,
-        redirectTo: "/reset-password",
       });
 
       if (error) {
